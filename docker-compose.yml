@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  # React Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: experimentallambda-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      - WDS_SOCKET_HOST=0.0.0.0
+    stdin_open: true
+    tty: true
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # Ngrok Tunnel for Internet Exposure
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: experimentallambda-ngrok
+    restart: unless-stopped
+    command:
+      - "http"
+      - "app:3000"
+      - "--log=stdout"
+    environment:
+      - NGROK_AUTHTOKEN=37LHiLw6lrSQ7m0u7uVVNiWOSu2_3NJpByCNUb823EcUG9o4y
+    ports:
+      - "4040:4040" # Ngrok Web UI for inspecting traffic
+    depends_on:
+      - app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

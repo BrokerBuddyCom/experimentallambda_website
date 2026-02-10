@@ -1,0 +1,587 @@
+/* ============================================
+   ANIMATED BACKGROUND - Premium Effects
+   ============================================ */
+
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* ============================================
+   Floating Orbs - Glassmorphic Spheres
+   ============================================ */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: floatOrb 20s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.4) 0%,
+    transparent 70%
+  );
+  top: -20%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.35) 0%,
+    transparent 70%
+  );
+  top: 30%;
+  right: -15%;
+  animation-delay: -5s;
+  animation-duration: 25s;
+}
+
+.orb-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(6, 182, 212, 0.3) 0%,
+    transparent 70%
+  );
+  bottom: -10%;
+  left: 20%;
+  animation-delay: -10s;
+  animation-duration: 22s;
+}
+
+.orb-4 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(
+    circle,
+    rgba(236, 72, 153, 0.25) 0%,
+    transparent 70%
+  );
+  top: 50%;
+  left: 50%;
+  animation-delay: -15s;
+  animation-duration: 28s;
+}
+
+@keyframes floatOrb {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(50px, -80px) scale(1.1);
+  }
+  50% {
+    transform: translate(-30px, 50px) scale(0.95);
+  }
+  75% {
+    transform: translate(80px, 30px) scale(1.05);
+  }
+}
+
+/* ============================================
+   Morphing Blob
+   ============================================ */
+.blob-container {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 500px;
+  height: 500px;
+  opacity: 0.15;
+}
+
+.blob {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.8) 0%,
+    rgba(139, 92, 246, 0.6) 50%,
+    rgba(6, 182, 212, 0.8) 100%
+  );
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: morphBlob 15s ease-in-out infinite;
+}
+
+@keyframes morphBlob {
+  0%,
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    transform: rotate(90deg) scale(1.1);
+  }
+  50% {
+    border-radius: 50% 60% 30% 60% / 30% 40% 70% 50%;
+    transform: rotate(180deg) scale(0.95);
+  }
+  75% {
+    border-radius: 40% 30% 60% 50% / 60% 70% 30% 40%;
+    transform: rotate(270deg) scale(1.05);
+  }
+}
+
+/* ============================================
+   Animated SVG Lines
+   ============================================ */
+.animated-lines {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  opacity: 0.1;
+}
+
+.line {
+  fill: none;
+  stroke: url(#lineGradient);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 8s ease-in-out infinite;
+}
+
+.line-1 {
+  stroke: rgba(99, 102, 241, 0.5);
+  animation-delay: 0s;
+}
+
+.line-2 {
+  stroke: rgba(139, 92, 246, 0.4);
+  animation-delay: 0.5s;
+}
+
+.line-3 {
+  stroke: rgba(6, 182, 212, 0.3);
+  animation-delay: 1s;
+}
+
+@keyframes drawLine {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -1000;
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   Floating Particles
+   ============================================ */
+.particles {
+  position: absolute;
+  inset: 0;
+}
+
+.particle {
+  position: absolute;
+  bottom: -20px;
+  width: 4px;
+  height: 4px;
+  background: rgba(99, 102, 241, 0.6);
+  border-radius: 50%;
+  animation: floatUp 20s linear infinite;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+}
+
+.particle:nth-child(2n) {
+  background: rgba(139, 92, 246, 0.6);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+  width: 3px;
+  height: 3px;
+}
+
+.particle:nth-child(3n) {
+  background: rgba(6, 182, 212, 0.6);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+  width: 5px;
+  height: 5px;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(-10vh) translateX(10px) scale(1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(-20px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   Light Mode Adjustments - Premium Effects
+   ============================================ */
+
+/* Light Mode Orbs - Vibrant but subtle */
+.app.light-mode .orb {
+  opacity: 0.4;
+  filter: blur(100px);
+}
+
+.app.light-mode .orb-1 {
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.5) 0%,
+    rgba(129, 140, 248, 0.3) 40%,
+    transparent 70%
+  );
+}
+
+.app.light-mode .orb-2 {
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.45) 0%,
+    rgba(167, 139, 250, 0.25) 40%,
+    transparent 70%
+  );
+}
+
+.app.light-mode .orb-3 {
+  background: radial-gradient(
+    circle,
+    rgba(6, 182, 212, 0.4) 0%,
+    rgba(34, 211, 238, 0.2) 40%,
+    transparent 70%
+  );
+}
+
+.app.light-mode .orb-4 {
+  background: radial-gradient(
+    circle,
+    rgba(236, 72, 153, 0.35) 0%,
+    rgba(244, 114, 182, 0.2) 40%,
+    transparent 70%
+  );
+}
+
+/* Light Mode Blob */
+.app.light-mode .blob-container {
+  opacity: 0.2;
+}
+
+.app.light-mode .blob {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.7) 0%,
+    rgba(139, 92, 246, 0.5) 50%,
+    rgba(6, 182, 212, 0.7) 100%
+  );
+}
+
+/* Light Mode Particles - More visible */
+.app.light-mode .particle {
+  opacity: 0.7;
+  background: rgba(99, 102, 241, 0.8);
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.5);
+}
+
+.app.light-mode .particle:nth-child(2n) {
+  background: rgba(139, 92, 246, 0.8);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
+}
+
+.app.light-mode .particle:nth-child(3n) {
+  background: rgba(6, 182, 212, 0.8);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.5);
+}
+
+.app.light-mode .particle-glow {
+  box-shadow:
+    0 0 15px rgba(99, 102, 241, 0.6),
+    0 0 30px rgba(99, 102, 241, 0.3);
+}
+
+/* Light Mode Lines */
+.app.light-mode .animated-lines {
+  opacity: 0.15;
+}
+
+.app.light-mode .line-1 {
+  stroke: rgba(99, 102, 241, 0.6);
+}
+
+.app.light-mode .line-2 {
+  stroke: rgba(139, 92, 246, 0.5);
+}
+
+.app.light-mode .line-3 {
+  stroke: rgba(6, 182, 212, 0.4);
+}
+
+/* Light Mode Cursor Glow */
+.app.light-mode .cursor-glow {
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.12) 0%,
+    rgba(139, 92, 246, 0.06) 30%,
+    transparent 70%
+  );
+  filter: blur(50px);
+}
+
+/* Light Mode Grid */
+.app.light-mode .animated-grid {
+  opacity: 0.6;
+}
+
+.app.light-mode .animated-grid .grid-cell {
+  background: rgba(99, 102, 241, 0.03);
+  border: 1px solid rgba(99, 102, 241, 0.05);
+}
+
+.app.light-mode .animated-grid .grid-cell:hover {
+  background: rgba(99, 102, 241, 0.08);
+}
+
+/* Light Mode Shooting Stars - Colored instead of white */
+.app.light-mode .shooting-star {
+  fill: rgba(99, 102, 241, 0.9);
+  filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.6));
+}
+
+.app.light-mode .star-2 {
+  fill: rgba(139, 92, 246, 0.9);
+  filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.6));
+}
+
+.app.light-mode .star-3 {
+  fill: rgba(6, 182, 212, 0.9);
+  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.6));
+}
+
+/* Light Mode Noise Overlay */
+.app.light-mode .noise-overlay {
+  opacity: 0.015;
+  mix-blend-mode: multiply;
+}
+
+/* ============================================
+   Cursor Following Glow
+   ============================================ */
+.cursor-glow {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.15) 0%,
+    rgba(139, 92, 246, 0.08) 30%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  filter: blur(40px);
+}
+
+/* ============================================
+   Animated Grid
+   ============================================ */
+.animated-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1px;
+  opacity: 0.5;
+}
+
+.grid-cell {
+  background: rgba(99, 102, 241, 0.02);
+  border: 1px solid rgba(99, 102, 241, 0.03);
+  transition: all 0.5s ease;
+  animation: gridPulse 4s ease-in-out infinite;
+}
+
+.grid-cell:hover {
+  background: rgba(99, 102, 241, 0.1);
+}
+
+@keyframes gridPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    background: rgba(99, 102, 241, 0.02);
+  }
+  50% {
+    opacity: 1;
+    background: rgba(99, 102, 241, 0.05);
+  }
+}
+
+/* ============================================
+   Shooting Stars
+   ============================================ */
+.shooting-star {
+  fill: #fff;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+}
+
+.star-1 {
+  animation: shootingStar1 8s ease-out infinite;
+}
+
+.star-2 {
+  animation: shootingStar2 12s ease-out infinite;
+  animation-delay: 3s;
+}
+
+.star-3 {
+  animation: shootingStar3 10s ease-out infinite;
+  animation-delay: 6s;
+}
+
+@keyframes shootingStar1 {
+  0% {
+    cx: -10;
+    cy: 100;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  20% {
+    cx: 400;
+    cy: 300;
+    opacity: 0;
+  }
+  100% {
+    cx: 400;
+    cy: 300;
+    opacity: 0;
+  }
+}
+
+@keyframes shootingStar2 {
+  0% {
+    cx: 1200;
+    cy: 50;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  25% {
+    cx: 600;
+    cy: 400;
+    opacity: 0;
+  }
+  100% {
+    cx: 600;
+    cy: 400;
+    opacity: 0;
+  }
+}
+
+@keyframes shootingStar3 {
+  0% {
+    cx: 300;
+    cy: -10;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  22% {
+    cx: 800;
+    cy: 350;
+    opacity: 0;
+  }
+  100% {
+    cx: 800;
+    cy: 350;
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   Glowing Particles
+   ============================================ */
+.particle-glow {
+  animation:
+    floatUp 20s linear infinite,
+    particlePulse 2s ease-in-out infinite !important;
+}
+
+@keyframes particlePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(99, 102, 241, 0.8),
+      0 0 40px rgba(99, 102, 241, 0.4);
+    transform: scale(1.2);
+  }
+}
+
+/* ============================================
+   Noise Overlay
+   ============================================ */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* ============================================
+   Reduce Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .orb,
+  .blob,
+  .line,
+  .particle,
+  .shooting-star,
+  .grid-cell,
+  .cursor-glow {
+    animation: none;
+  }
+}
