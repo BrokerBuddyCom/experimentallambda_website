@@ -25,7 +25,7 @@ function Footer() {
           <div className="footer-column">
             <h4>Support</h4>
             <a href="/">FAQs</a>
-            <a href="/>Privacy Policy</a>
+            <a href="/">Privacy Policy</a>
             <a href="/">Terms & Conditions</a>
           </div>
         </div>
