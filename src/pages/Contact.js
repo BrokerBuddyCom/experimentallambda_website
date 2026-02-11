@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ScrollReveal from "../components/ScrollReveal";
 import toast, { Toaster } from "react-hot-toast";
 function Contact() {
@@ -10,8 +10,6 @@ function Contact() {
     message: "",
     contactMethod: "whatsapp",
   });
-
-  const [result, setResult] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -35,7 +33,6 @@ function Contact() {
         contactMethod: "whatsapp",
       });
     }
-    setResult(data.success ? "Success!" : "Error");
   };
 
   const handleChange = (e) => {
