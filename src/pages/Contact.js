@@ -158,13 +158,13 @@ function Contact() {
                 <div className="social-links">
                   <h4>Follow Us</h4>
                   <div className="social-icons">
-                    <a href="#" aria-label="LinkedIn">
+                    <a href="/" aria-label="LinkedIn">
                       LinkedIn
                     </a>
-                    <a href="#" aria-label="Twitter">
+                    <a href="/" aria-label="Twitter">
                       Twitter
                     </a>
-                    <a href="#" aria-label="Facebook">
+                    <a href="/" aria-label="Facebook">
                       Facebook
                     </a>
                   </div>
