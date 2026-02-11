@@ -16,17 +16,17 @@ function Footer() {
 
           <div className="footer-column">
             <h4>Company</h4>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/services">Services</Link>
-            <Link to="/contact">Contact</Link>
+            <Link to="/#">Home</Link>
+            <Link to="/about/#">About</Link>
+            <Link to="/services/#">Services</Link>
+            <Link to="/contact/#">Contact</Link>
           </div>
 
           <div className="footer-column">
             <h4>Support</h4>
-            <a href="/">FAQs</a>
-            <a href="/">Privacy Policy</a>
-            <a href="/">Terms & Conditions</a>
+            <a href="/#">FAQs</a>
+            <a href="/#">Privacy Policy</a>
+            <a href="/#">Terms & Conditions</a>
           </div>
         </div>
 
