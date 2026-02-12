@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ScrollReveal from "../components/ScrollReveal";
-
+import toast, { Toaster } from "react-hot-toast";
 function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -11,6 +11,30 @@ function Contact() {
     contactMethod: "whatsapp",
   });
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    formData.append("access_key", "bcb08ceb-2bce-4eda-8f3a-8e0d181d5b3b");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+    if (data.success === true) {
+      showSuccess();
+      setFormData({
+        name: "",
+        businessType: "",
+        phone: "",
+        email: "",
+        message: "",
+        contactMethod: "whatsapp",
+      });
+    }
+  };
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -18,15 +42,19 @@ function Contact() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    alert("Thank you! We will contact you soon.");
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Handle form submission here
+  //   console.log("Form submitted:", formData);
+  //   alert("Thank you! We will contact you soon.");
+  // };
+  const showSuccess = () => {
+    toast.success("Message sent successfully!");
   };
 
   return (
     <div className="contact-page">
+      <Toaster position="bottom-center" reverseOrder={false} />
       <section className="contact-header">
         <div className="container">
           <ScrollReveal animation="fade-up">
@@ -155,20 +183,20 @@ function Contact() {
                   <strong>Business Hours:</strong>
                   <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
                 </div>
-                <div className="social-links">
+                {/* <div className="social-links">
                   <h4>Follow Us</h4>
                   <div className="social-icons">
-                    <a href="#" aria-label="LinkedIn">
+                    <a href="/" aria-label="LinkedIn">
                       LinkedIn
                     </a>
-                    <a href="#" aria-label="Twitter">
+                    <a href="/" aria-label="Twitter">
                       Twitter
                     </a>
-                    <a href="#" aria-label="Facebook">
+                    <a href="/" aria-label="Facebook">
                       Facebook
                     </a>
                   </div>
-                </div>
+                </div> */}
               </div>
             </ScrollReveal>
           </div>
