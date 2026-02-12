@@ -173,7 +173,7 @@ function Contact() {
                 <h3>Contact Information</h3>
                 <div className="info-item">
                   <strong>Phone:</strong>
-                  <p>+91 62657 42630</p>
+                  <p>+91 (9768067166 / 8477083074)</p>
                 </div>
                 <div className="info-item">
                   <strong>Email:</strong>
