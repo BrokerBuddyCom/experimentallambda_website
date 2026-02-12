@@ -24,9 +24,9 @@ function Footer() {
 
           <div className="footer-column">
             <h4>Support</h4>
-            <a href="#">FAQs</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms & Conditions</a>
+            <Link to="/faq">FAQs</Link>
+            <Link to="/privacy-policy">Privacy Policy</Link>
+            <Link to="/terms-and-conditions">Terms & Conditions</Link>
           </div>
         </div>
 

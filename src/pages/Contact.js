@@ -145,11 +145,11 @@ function Contact() {
                 <h3>Contact Information</h3>
                 <div className="info-item">
                   <strong>Phone:</strong>
-                  <p>+1 (555) 123-4567</p>
+                  <p>+91 (9768067166/8477083074)</p>
                 </div>
                 <div className="info-item">
                   <strong>Email:</strong>
-                  <p>hello@experimentallambda.com</p>
+                  <p>official@experimentallambda.com</p>
                 </div>
                 <div className="info-item">
                   <strong>Business Hours:</strong>
