@@ -1,4 +1,85 @@
 /* ============================================
+   Back To Top Button
+   ============================================ */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-dark-card);
+  color: var(--text-primary-dark);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.95);
+  transition: opacity 0.3s, transform 0.2s;
+  z-index: 100;
+}
+.back-to-top-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.back-to-top-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+}
+.back-to-top-arrow {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: none;
+  position: relative;
+}
+.back-to-top-arrow::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-left: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, #818cf8, #6366f1, #4f46e5) 1;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+.app.light-mode .back-to-top-btn {
+  background: var(--bg-light-elevated);
+  color: var(--text-primary-light);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+@media (max-width: 768px) {
+  .back-to-top-btn {
+    bottom: 20px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+  }
+}
+@media (max-width: 480px) {
+  .back-to-top-btn {
+    bottom: 12px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+  }
+}
+/* Prevent overlap with footer */
+.footer {
+  z-index: 10;
+}
+/* ============================================
    EXPERIMENTAL LAMBDA - Premium Design
    Inspired by Linear, Vercel, Stripe
    ============================================ */
