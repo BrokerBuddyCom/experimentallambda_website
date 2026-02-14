@@ -1,4 +1,5 @@
 import React from "react";
+import BackToTopButton from "../components/BackToTopButton";
 import Hero from "../components/Hero";
 import Problems from "../components/Problems";
 import Solutions from "../components/Solutions";
@@ -19,6 +20,7 @@ function Home() {
       <Trust />
       <ServicesOverview />
       <FinalCTA />
+      <BackToTopButton />
     </div>
   );
 }
