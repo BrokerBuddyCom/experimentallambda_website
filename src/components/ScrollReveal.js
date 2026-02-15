@@ -20,7 +20,12 @@ function ScrollReveal({
   threshold = 0.1,
   ...props
 }) {
-  const [ref, isVisible] = useScrollReveal({ threshold });
+  // Always call hook first (fix ESLint rule)
+  const [ref, isVisibleRaw] = useScrollReveal({ threshold });
+  // Detect mobile screen
+  const isMobile = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(max-width: 768px)").matches;
+  // On mobile, override to visible
+  const isVisible = isMobile ? true : isVisibleRaw;
 
   const animationClass =
     {
