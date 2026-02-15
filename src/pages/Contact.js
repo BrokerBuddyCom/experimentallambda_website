@@ -1,7 +1,13 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import ScrollReveal from "../components/ScrollReveal";
 import toast, { Toaster } from "react-hot-toast";
+import { useAnalytics } from "../hooks/useAnalytics";
+
 function Contact() {
+  const { trackFormStart, trackFormField, trackFormSubmit, trackFormSuccess, trackFormError } = useAnalytics();
+  const formStartTimeRef = useRef(null);
+  const [formStarted, setFormStarted] = useState(false);
+  
   const [formData, setFormData] = useState({
     name: "",
     businessType: "",
@@ -11,34 +17,78 @@ function Contact() {
     contactMethod: "whatsapp",
   });
 
+  const handleFormStart = () => {
+    if (!formStarted) {
+      formStartTimeRef.current = Date.now();
+      setFormStarted(true);
+      trackFormStart('contact_form', 'contact_page');
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    formData.append("access_key", "bcb08ceb-2bce-4eda-8f3a-8e0d181d5b3b");
+    
+    const completionTime = formStartTimeRef.current 
+      ? Math.round((Date.now() - formStartTimeRef.current) / 1000)
+      : 0;
+    
+    // Track form submission attempt
+    trackFormSubmit(
+      'contact_form',
+      formData.businessType,
+      formData.contactMethod,
+      formData.message.length,
+      completionTime
+    );
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
+    const formDataToSend = new FormData(event.target);
+    formDataToSend.append("access_key", "bcb08ceb-2bce-4eda-8f3a-8e0d181d5b3b");
 
-    const data = await response.json();
-    if (data.success === true) {
-      showSuccess();
-      setFormData({
-        name: "",
-        businessType: "",
-        phone: "",
-        email: "",
-        message: "",
-        contactMethod: "whatsapp",
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataToSend,
       });
+
+      const data = await response.json();
+      if (data.success === true) {
+        // Track successful form submission
+        trackFormSuccess('contact_form', formData.businessType, formData.contactMethod);
+        showSuccess();
+        setFormData({
+          name: "",
+          businessType: "",
+          phone: "",
+          email: "",
+          message: "",
+          contactMethod: "whatsapp",
+        });
+        setFormStarted(false);
+        formStartTimeRef.current = null;
+      } else {
+        // Track form error
+        trackFormError('contact_form', 'submission', 'api_response', data.message || 'Unknown error');
+        toast.error("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      // Track network error
+      trackFormError('contact_form', 'submission', 'network', error.message);
+      toast.error("Network error. Please check your connection.");
     }
   };
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+    
+    // Track field completion when user moves away from a filled field
+    if (value && value.trim() !== '') {
+      const fieldOrder = ['name', 'businessType', 'phone', 'email', 'message', 'contactMethod'].indexOf(name) + 1;
+      trackFormField('contact_form', name, fieldOrder);
+    }
+    
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
 
@@ -77,6 +127,7 @@ function Contact() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    onFocus={handleFormStart}
                     required
                   />
                 </div>

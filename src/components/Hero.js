@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAnalytics } from "../hooks/useAnalytics";
 
 function Hero() {
+  const { trackCTA } = useAnalytics();
+
   return (
     <section className="hero">
       <div className="container">
@@ -24,10 +27,15 @@ function Hero() {
             <Link
               to="/contact"
               className="btn btn-primary glow-border ripple-effect"
+              onClick={() => trackCTA('Book Free Consultation', 'hero_section', 'primary_button', '/contact')}
             >
               Book Free Consultation
             </Link>
-            <a href="#how-it-works" className="btn btn-secondary ripple-effect">
+            <a 
+              href="#how-it-works" 
+              className="btn btn-secondary ripple-effect"
+              onClick={() => trackCTA('See How It Works', 'hero_section', 'secondary_button', '#how-it-works')}
+            >
               See How It Works
             </a>
           </div>

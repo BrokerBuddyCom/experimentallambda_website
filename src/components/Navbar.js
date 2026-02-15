@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
+import { useAnalytics } from "../hooks/useAnalytics";
 
 function Navbar({ darkMode, toggleDarkMode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { trackCTA, trackNav, trackTheme } = useAnalytics();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleThemeToggle = () => {
+    const newMode = !darkMode ? 'dark' : 'light';
+    trackTheme(newMode);
+    toggleDarkMode();
   };
 
   return (
@@ -24,16 +32,16 @@ function Navbar({ darkMode, toggleDarkMode }) {
           </button>
 
           <div className={`navbar-menu ${isMenuOpen ? "active" : ""}`}>
-            <Link to="/" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/" onClick={() => { trackNav('Home', 'navbar', '/'); setIsMenuOpen(false); }}>
               Home
             </Link>
-            <Link to="/services" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/services" onClick={() => { trackNav('Services', 'navbar', '/services'); setIsMenuOpen(false); }}>
               Services
             </Link>
-            <Link to="/about" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/about" onClick={() => { trackNav('About', 'navbar', '/about'); setIsMenuOpen(false); }}>
               About
             </Link>
-            <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/contact" onClick={() => { trackNav('Contact', 'navbar', '/contact'); setIsMenuOpen(false); }}>
               Contact
             </Link>
           </div>
@@ -41,13 +49,17 @@ function Navbar({ darkMode, toggleDarkMode }) {
           <div className="navbar-actions">
             <button
               className="theme-toggle"
-              onClick={toggleDarkMode}
+              onClick={handleThemeToggle}
               aria-label="Toggle dark mode"
             >
               {darkMode ? "☀️" : "🌙"}
             </button>
             <div className="navbar-cta">
-              <Link to="/contact" className="btn btn-primary">
+              <Link 
+                to="/contact" 
+                className="btn btn-primary"
+                onClick={() => trackCTA('Get Started', 'navbar', 'primary_button', '/contact')}
+              >
                 Get Started
               </Link>
             </div>

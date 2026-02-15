@@ -1,7 +1,10 @@
 import React from "react";
 import ScrollReveal from "../components/ScrollReveal";
+import { useAnalytics } from "../hooks/useAnalytics";
 
 function Services() {
+  const { trackCTA } = useAnalytics();
+
   const services = [
     {
       title: "Business Process Automation",
@@ -64,7 +67,11 @@ function Services() {
             <div className="services-cta">
               <h2>Ready to automate your business?</h2>
               <p>Get a free consultation with our automation experts</p>
-              <a href="/contact" className="btn btn-primary">
+              <a 
+                href="/contact" 
+                className="btn btn-primary"
+                onClick={() => trackCTA('Talk to expert now', 'services_page', 'primary_button', '/contact')}
+              >
                 Talk to expert now
               </a>
             </div>
