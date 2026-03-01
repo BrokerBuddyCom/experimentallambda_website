@@ -28,7 +28,7 @@ function About() {
 
           <ScrollReveal animation="stagger" className="about-highlights">
             <div className="highlight-card">
-              <h3>1000+</h3>
+              <h3>30+</h3>
               <p>Happy Clients</p>
             </div>
             <div className="highlight-card">

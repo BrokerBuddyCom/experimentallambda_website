@@ -48,7 +48,7 @@ function Trust() {
     <section className="trust">
       <div className="container">
         <ScrollReveal animation="fade-up">
-          <h2>1000+ Happy Clients</h2>
+          <h2>30+ Happy Clients</h2>
         </ScrollReveal>
 
         <ScrollReveal animation="scale">

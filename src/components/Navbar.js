@@ -38,6 +38,9 @@ function Navbar({ darkMode, toggleDarkMode }) {
             <Link to="/services" onClick={() => { trackNav('Services', 'navbar', '/services'); setIsMenuOpen(false); }}>
               Services
             </Link>
+            <Link to="/portfolio" onClick={() => { trackNav('Portfolio', 'navbar', '/portfolio'); setIsMenuOpen(false); }}>
+              Portfolio
+            </Link>
             <Link to="/about" onClick={() => { trackNav('About', 'navbar', '/about'); setIsMenuOpen(false); }}>
               About
             </Link>
@@ -55,8 +58,8 @@ function Navbar({ darkMode, toggleDarkMode }) {
               {darkMode ? "☀️" : "🌙"}
             </button>
             <div className="navbar-cta">
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 className="btn btn-primary"
                 onClick={() => trackCTA('Get Started', 'navbar', 'primary_button', '/contact')}
               >
