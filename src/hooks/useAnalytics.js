@@ -133,7 +133,8 @@ export const useSectionTracking = (sectionRef, sectionName) => {
   const location = useLocation();
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    const currentRef = sectionRef.current;
+    if (!currentRef) return;
 
     const startTime = Date.now();
     let tracked = false;
@@ -151,11 +152,11 @@ export const useSectionTracking = (sectionRef, sectionName) => {
       { threshold: 0.5 } // Track when 50% of section is visible
     );
 
-    observer.observe(sectionRef.current);
+    observer.observe(currentRef);
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [sectionRef, sectionName, location.pathname]);
