@@ -2163,6 +2163,23 @@ body {
   .services-grid {
     grid-template-columns: 1fr;
   }
+
+  /* Stop animations on Portfolio page in mobile view */
+  .portfolio-page .reveal-fade-up,
+  .portfolio-page .reveal-fade,
+  .portfolio-page .reveal-scale,
+  .portfolio-page .reveal-left,
+  .portfolio-page .reveal-right,
+  .portfolio-page .reveal-blur,
+  .portfolio-page .reveal-stagger > *,
+  .portfolio-page .section-title-reveal,
+  .portfolio-page .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
 /* ============================================

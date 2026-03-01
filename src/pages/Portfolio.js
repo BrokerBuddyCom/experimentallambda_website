@@ -132,7 +132,7 @@ function Portfolio() {
             {filteredProjects.map((project) => (
               <div key={project.id} className="portfolio-card">
                 <div className="portfolio-card-image">
-                  <img src={project.image} alt={project.title} />
+                  <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
                   <div className="portfolio-card-overlay">
                     <span className="portfolio-category-badge">
                       {project.category}
@@ -186,14 +186,15 @@ function Portfolio() {
               <Link
                 to="/contact"
                 className="btn btn-primary"
-                onClick={() =>
+                onClick={() => {
                   trackCTA(
                     "Start Your Project",
                     "portfolio_page",
                     "primary_button",
                     "/contact"
-                  )
-                }
+                  );
+                  window.scrollTo(0, 0);
+                }}
               >
                 Start Your Project
               </Link>
